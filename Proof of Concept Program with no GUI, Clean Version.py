@@ -6,6 +6,8 @@
 # specify in this code.  You'll also need to create a database using makeblastdb from a text file.  You also need to 
 # change the file pathways that arein this code to the ones that are on your computer.
 
+#Also, you need to install Biopython
+
 from Bio.Blast.Applications import NcbiblastnCommandline
 
 
