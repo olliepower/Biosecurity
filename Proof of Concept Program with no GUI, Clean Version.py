@@ -2,6 +2,9 @@
 # and run a BLAST serach against a local database and return the resuts as an
 # XML file.
 
+#  To get this code to work on your computer, you need to download BLAST+ and move Blastn to the file pathway you 
+# specify in this code.  You'll also need to create a database using makeblastdb from a text file.  You also need to 
+# change the file pathways that arein this code to the ones that are on your computer.
 
 from Bio.Blast.Applications import NcbiblastnCommandline
 
