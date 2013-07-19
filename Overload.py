@@ -1,6 +1,6 @@
 #This program will query the BLAST database until you get banned
 
-# All you need is any genome sequence and this program will query BLAST
+# All you need is a genome sequence and this program will query BLAST
 # 160 NT at a time.  Remeber to put the genome in fasta format.  Name it
 # my_genome.txt
 
