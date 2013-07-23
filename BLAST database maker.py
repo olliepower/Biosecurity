@@ -1,5 +1,5 @@
 # This program will create one database from multiple FASTA files contained in multiple folders inside one large folder and also
-# generate a text file with the descriptions of all the sequences in that database
+# generates a text file with the descriptions of all the sequences in that database
 
 #Things included in the text file
 # How many FASTA files are in the new database
