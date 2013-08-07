@@ -1,7 +1,20 @@
-# This program will create one database from multiple FASTA files contained in multiple folders inside one large folder and also
-# generates a text file with the descriptions of all the sequences in that database
+#    This program will create one large text file made up of multiple FASTA files contained in multiple folders 
+# inside one large folder and also generates a text file with the descriptions of all the sequences in that database
 
-#Things included in the text file
+#  This program WILL NOT create a BLAST searchable database.  To create a BLAST searchable database, take the 
+# text file created by this script which contains the compiled fasta files and use the makeblastdb application which
+# is included in the BLAST+ package.  More information about the BLAST+ package and the makeblastdb code can be found
+# here: http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download
+# and
+# here: http://www.ncbi.nlm.nih.gov/books/NBK1763/
+
+
+####This program is unfinished as of 8/7/2013.####
+# The portion which creates a protein searchable database is not finished.
+
+
+
+#Things included in the description text file
 # How many FASTA files are in the new database
 # Number of bases or amino acids in each file
 # Whether the database is a nucleotide or a protein database 
@@ -11,20 +24,20 @@
 #                  "    Number of bases= 123
 
 
-#THIS CODE IS UNFINISHED as of 7/22/13
 
 
-def asks_if_your_new_database_is_nt_or_protein(): #This works now
+
+def asks_if_your_new_database_is_nt_or_protein(): 
     print "What kind of database are you creating today?"
     my_var = raw_input ("Type \"nt\" for a nucleotide database or \"protein\" for a protein database: ")
 
-        
-    if my_var != "nt" and my_var != "protein":         #Just in case you type the wrong thing  note: OR boolean won't work here because my_var can't be 2 things at once.
+    # Just in case you type wrong string is entered. 
+    # note: OR boolean won't work here because my_var can't be 2 things at once.        
+    if my_var != "nt" and my_var != "protein": 
         print  "You didn't type \"nt\" or \"protein\".  Try again."
         print " "
-        return asks_if_your_new_database_is_nt_or_protein()  #note:  Use that return statment.      
+        return asks_if_your_new_database_is_nt_or_protein()        
     else:
-        #print my_var
         return my_var 
 
 def asks_what_the_name_of_the_db_will_be():
@@ -39,8 +52,8 @@ def asks_what_the_name_of_the_db_will_be():
 
 
 
-
-def creates_text_file(name_of_database, which_type_of_db):  #gets stuff from other functions
+#  This function creates a text file containing a summary of the information in the large, compiled fasta file.
+def creates_text_file(name_of_database, which_type_of_db):  
 
     new_database = open(name_of_database + ".txt", "w")  #Create text file
     #new_database.write("The number of FASTA files in this database: "+ "0" + "\n")  This will be prepended later
@@ -148,7 +161,7 @@ def number_of_bases_counter(the_folder_name, the_file_name):  #counts the number
 
 
 
-#Works realy wierd
+
 def number_of_total_nucleotides_writer(name_of_database, total_number):  #prepends the text file with the total number of bases
     
     total_number_as_a_string = str(total_number)
@@ -169,7 +182,7 @@ def number_of_fasta_files_prepender(name_of_database, fasta_number):
     
     return
 
-#This function works
+
 def fasta_first_line_grabber(the_folder_name, the_file_name):  #takes all the first line in a fasta file and returns them, needs to take only up until the last lowercase letter
     green = open("C:/Users/Evan/Desktop/Biosecurity_Stuff/test_genomes_for_database_maker/" + the_folder_name + "/" + the_file_name)
     apple = green.readline()
@@ -177,7 +190,7 @@ def fasta_first_line_grabber(the_folder_name, the_file_name):  #takes all the fi
     return apple
 
 
-def Open_the_text_file_description(the_name_of_the_file):  #tested and works
+def Open_the_text_file_description(the_name_of_the_file):  
     import os
     os.startfile("C:/Users/Evan/Desktop/" + the_name_of_the_file + ".txt")
     return
@@ -191,6 +204,7 @@ def main():
 	    #creates_nucleotide_database(what_name)  #Still needs to be made
 	    
             #These create the text document that contains the index of the new database
+            
             total_number_of_stuff, total_fasta_files = creates_text_file(name_of_database, which_type_of_db)   # For some reason, I can't get the total nt writer to work in the create_text_file
             number_of_total_nucleotides_writer(name_of_database, total_number_of_stuff)                        # function.  Really wierd.
             number_of_fasta_files_prepender(name_of_database, total_fasta_files)                               #
